@@ -31,11 +31,10 @@ def get_filters():
     # TO DO: get user input for month (all, january, february, ... , june)
     while True:
         month = input('Input the name of the month you would like to explore between january and june. You can also type "all" to display all months: ').lower()
-        months = ['january', 'february', 'march', 'april', 'may', 'june']
-        if month != 'all' and month not in months:
-            print('the month you entered is not valid')
-        else:
+        if month in ['january', 'february', 'march', 'april', 'may', 'june', 'all']:
             break
+        else:
+            print("invalid input. Please enter a valid input")
 
 
     # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
@@ -112,8 +111,7 @@ def station_stats(df):
     start_time = time.time()
 
     # TO DO: display most commonly used start station
-    common_start_station = df['Start Station'].mode()[0]
-    print("The most commonly used start station is:  {}".format(common_start_station))
+    print("The most commonly used start station is ", df['Start Station'].mode()[0], "\n")
 
     # TO DO: display most commonly used end station
     common_end_station = df['End Station'].mode()[0]
